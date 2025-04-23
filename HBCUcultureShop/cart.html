@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style4.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>                                         <!--Styling-->
+<style>
+      .header {
+  background: #924b34;
+  border-style: solid;
+  border-color: var(--var-sds-color-border-default-default, #d9d9d9);
+  border-width: 0px 0px 1px 0px;
+  padding: var(--var-sds-size-space-800, 32px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-600, 24px);
+  row-gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.search-bar {
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  color:black;
+  text-decoration: none;
+  margin-left: 430px;
+}
+.nav-links a {
+  color: black;
+  text-decoration: none;
+}
+.nav-links a:hover {
+  color: #e1dbd9;
+}
+.icon {
+  font-size: 24px;
+  color: black;
+  text-decoration: none;
+}
+table{
+  width: 80%;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 20px;
+}
+h3{
+  margin-left: 900px;
+  font-size: larger;
+  font-family: inter-semibold, sans-serif;
+}
+a {
+  text-decoration: none;
+  color: black;
+  font-family: inter-semibold, sans-serif;
+}
+</style>
+<body>
+<!--NAV Bar-->
+<div class="header">
+  <div class="block">
+
+<nav class="navbar">
+  <input type = "text" placeholder="Search on HBCU Culture Shop" class = "search-bar">
+  <ul class="nav-links">
+      <a href="userHome.html">Home</a>
+      <a href="Products.html">Products</a>
+      <a href="contact.html">Contact Us</a>
+      <a href="about.html">About Us</a>
+      <a href="homeShop.html">Logout</a>
+
+      <a href="cart.html" class="icon" title="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+      </a>
+  </ul>
+</nav>
+</div>
+</div>
+                           <!--Cart Content-->
+
+<h1>Your Cart!</h1>
+<table>
+    <thead>
+        <tr>
+            <th></th>
+            <th>Item</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody id="cart-items"></tbody>
+</table>
+
+<h3>Total: $<span id="cart-total">0</span></h3>
+<a href="Products.html">Add to Cart</a>
+<script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || {};
+    let cartItems = document.getElementById("cart-items");
+    let totalPrice = 0;
+
+    for (let item in cart) {
+        let row = document.createElement("tr");
+
+        let imageCell = document.createElement("td");
+        let img = document.createElement("img");
+        img.src = cart[item].image;
+        img.width = 90; 
+        img.height = 90;
+        imageCell.appendChild(img);
+
+        let nameCell = document.createElement("td");
+        nameCell.textContent = item;
+
+        let quantityCell = document.createElement("td");
+        quantityCell.textContent = cart[item].quantity;
+
+        let priceCell = document.createElement("td");
+        priceCell.textContent = `$${cart[item].price}`;
+
+        let totalCell = document.createElement("td");
+        totalCell.textContent = `$${cart[item].quantity * cart[item].price}`;
+        totalPrice += cart[item].quantity * cart[item].price;
+
+        let removeCell = document.createElement("td");
+        let removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.onclick = function () { removeFromCart(item); };
+        removeCell.appendChild(removeButton);
+
+        row.appendChild(imageCell);
+        row.appendChild(nameCell);
+        row.appendChild(quantityCell);
+        row.appendChild(priceCell);
+        row.appendChild(totalCell);
+        row.appendChild(removeCell);
+
+        cartItems.appendChild(row);
+    }
+
+    document.getElementById("cart-total").textContent = totalPrice;
+
+    function removeFromCart(item) {
+        let cart = JSON.parse(localStorage.getItem("cart")) || {};
+
+        if (cart[item]) {
+            cart[item].quantity -= 1;
+            if (cart[item].quantity === 0) {
+                delete cart[item];
+            }
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+        location.reload();
+    }
+</script>
+
+</body>
+</html>
