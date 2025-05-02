@@ -72,7 +72,7 @@
   height: 208px;
   position: absolute;
   left: 167px;
-  top: 150px; /*299px*/
+  top: 150px; 
 }
 .title {
     color: var(--var-sds-color-text-brand-on-brand-tertiary, #2c2c2c);

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Products</title>
+</head>                                            <!--Styling-->
+<style>
+    body {
+        font-family: "Inter-Regular", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 20px;
+    }
+    #products {
+        max-width: 798px;
+        margin: auto;
+        padding: 20px;
+    }
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+    }
+    .col-md-4 {
+        flex: 1 1 calc(33.333% - 20px);
+        box-sizing: border-box;
+    }
+    .card {
+        background-color: white;
+        border-radius: 8px;
+        border-style: solid;
+        border-width: 1px;
+        padding: 16px;
+        align-items: flex-start;
+        justify-content: flex-start;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        flex:1;
+        overflow: hidden;
+    }
+    .card img {
+        width: 100%;
+        height: 175px;
+        object-fit: cover;
+        display:flex;
+        align-items: center;
+    }
+    .card-body {
+        padding: 15px;
+    }
+    .card-title {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+    .card-text {
+        font-size: 16px;
+        color: #333;
+    }
+    button {
+        background-color: black;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: rgb(50, 46, 46);
+    }
+    .header {
+  background: #924b34;
+  border-style: solid;
+  border-color: var(--var-sds-color-border-default-default, #d9d9d9);
+  border-width: 0px 0px 1px 0px;
+  padding: var(--var-sds-size-space-800, 32px);
+  display: flex;
+  flex-direction: row;
+  gap: var(--var-sds-size-space-600, 24px);
+  row-gap: 0px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  margin-top:-18px;
+    margin-bottom: 30px;
+    margin-right: 99px;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.search-bar {
+  width: 400px;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  color:black;
+  text-decoration: none;
+  margin-left: 430px;
+  font-family: inter-semibold, sans-serif;
+}
+.nav-links a {
+  color: black;
+  text-decoration: none;
+    font-weight: bold;
+}
+.nav-links a:hover {
+  color: #e1dbd9;
+}
+.icon {
+  font-size: 24px;
+  color: black;
+  text-decoration: none;
+}
+</style>
+<body style="background-color: #5c3309;">
+                                <!--NAV Bar-->
+<div class="header">
+    <div class="block">
+  
+<nav class="navbar">
+    <input type = "text" placeholder="Search on HBCU Culture Shop" class = "search-bar" onkeyup="searchProducts()">
+
+    </ul>
+    <ul class="nav-links">
+        <a href="userHome.html">Home</a>
+        <a href="Products.html">Products</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="about.html">About Us</a>
+        <a href="index.html">Logout</a>
+        <a href="cart.html" class="icon" title="cart">
+            <i class="fa-solid fa-cart-shopping"></i>
+        </a>
+    </ul>
+</nav>
+</div>
+</div>
+    
+                                 <!--Products-->
+    <div id="products">
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card"> 
+                <img src="Virginia State Trojans Classic Ed- Vintage Virginia State College Apparel, Retro Virginia State Tee, Virginia State HBCU Hoodie & Sweatshirt.jpg" width="280" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Sweat Shirt Virginia State University</h5>
+                    <p class="card-text"><strong>$20</strong></p>
+                    <button onclick="addToCart('Sweat Shirt Virginia State University', 20, 'Virginia State Trojans Classic Ed- Vintage Virginia State College Apparel, Retro Virginia State Tee, Virginia State HBCU Hoodie & Sweatshirt.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="card"> 
+                <img src="Virginia State University Sweatpants - M.jpg" width="280" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Sweatpants Virginia State University</h5>
+                    <p class="card-text"><strong>$50</strong></p>
+                    <button onclick="addToCart('Sweatpants Virginia State University', 50, 'Virginia State University Sweatpants - M.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="card"> 
+                <img src="VSU product5.jpg" width="280" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Jersey Shirt Virginia State University</h5>
+                    <p class="card-text"><strong>$90</strong></p>
+                    <button onclick="addToCart('Jersey Shirt Virginia State University', 90, 'VSU product5.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card"> 
+                <img src="VSU product3.jpg" width="280" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">T-shirt Virginia State University</h5>
+                    <p class="card-text"><strong>$15</strong></p>
+                    <button onclick="addToCart('T-shirt Virginia State University', 15,'VSU product3.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="col-md-4">
+            <div class="card"> 
+                <img src="VSU product2.webp" width="280" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Hoodie Virginia State University</h5>
+                    <p class="card-text"><strong>$25</strong></p>
+                    <button onclick="addToCart('Hoodie Virginia State University', 25,'VSU product2.webp')">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    <br><br>
+        <div class="col-md-4">
+            <div class="card"> 
+                <img src="VSU product1.jpg" width="280" height="200">
+                <div class="card-body">
+                    <h5 class="card-title">Sweat Shirt Virginia State University</h5>
+                    <p class="card-text"><strong>$85</strong></p>
+                    <button onclick="addToCart('Sweat Shirt Virginia State University', 85,'VSU product1.jpg')">Add to Cart</button>
+                </div>
+            </div>
+        </div>   
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+<script src="search.js"></script>
+</body>
+</html>
