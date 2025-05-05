@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles2.css">
+    <title>Sign Up</title>
+</head>
+<body>
+<div
+  class="sign-up-page"
+  style="
+    background: url(sign-up-page.png) center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  "
+>
+  <img
+    class="hero-form"
+    style="
+      background: url(Unleashing\ Powerful\ Voices\ _\ A\ Celebration\ of\ African\ American\ Strength.jpg) center;
+      background-size: cover;
+      background-repeat: no-repeat;
+    "
+    src="Unleashing Powerful Voices _ A Celebration of African American Strength.jpg"
+  />
+  <div class="rectangle-1">
+  <div class="text-content-title">
+    <div class="title">Welcome to HBCU Culture Shop</div>
+  </div>
+  <div class="subtitle">
+    Rich culture, history, and traditions of Historically Black Colleges and
+    Universities (HBCUs)
+  </div>
+ <form id="signupForm" form action="" method="" style="margin-top: 315px ;font-family:Inter-Regular, sans-serif;margin-left: 290px;">
+  <label>First Name</label><br>
+        <input type="text" id="first_name" placeholder="First Name" style="padding: 8px; width: 430px; height:30px; border-radius: 8px; border:none;"><br><br>
+    
+        <label>Last Name</label><br>
+        <input type="text" id="last_name" placeholder="Last Name" style="padding: 8px; width: 430px; height:30px; border-radius: 8px; border:none;"><br><br>
+        <label>Email</label><br>
+        <input type="email" id="email" placeholder="Email" style="padding: 8px; width: 430px; height:30px; border-radius: 8px; border:none;"><br><br>
+        <label>Password</label><br>
+        <input type="password" id="password" placeholder="Create a Password" style="padding: 8px; width: 430px; height:30px; border-radius: 8px; border:none;"><br><br>
+        <input type="submit" value="Sign Up" style="background:black ; width:430px; color:white;
+        padding: 12px; border-radius: 8px; border-color:black;">
+</form> 
+<a href="signIn.html" class="sign-in-button">Sign In</a> <!--When clicked on it takes you to the Sign In Page-->
+</div>
+</div> 
+ </div>
+</div>
+
+// This script handles the user signup process by storing user information in local storage and sending a confirmation email.
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Store user info in local storage
+    localStorage.setItem("first_name", document.getElementById("first_name").value);
+    localStorage.setItem("last_name", document.getElementById("last_name").value);
+    localStorage.setItem("email", document.getElementById("email").value);
+    localStorage.setItem("password", document.getElementById("password").value);
+
+    // Send a confirmation email
+    sendConfirmationEmail(document.getElementById("email").value);
+
+    // Redirect to homepage
+    window.location.href = "userHome.html"; 
+});
+
+function sendConfirmationEmail(userEmail) {
+    alert("A confirmation email has been sent to " + userEmail);
+}
+</script>
+</body>
+</html>
